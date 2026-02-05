@@ -12,10 +12,19 @@ using T=float;
 using TYPE_POLICY = rlt::numeric_types::Policy<T>;
 using TI = typename DEVICE::index_t;
 
-
-
+using SPECIFICATION= rlt::rl::environments::l2f::Specification<T,TI>;
+using ENVIRONMENT = rlt::rl::environments::Multirotor<SPECIFICATION>;
 
 int main(int argc, char** argv)
 {
+    DEVICE device;
+    TI seed=0;
+    RNG rng;
+    rlt::init(device, rng, seed);
 
+    ENVIRONMENT environment;
+    ENVIRONMENT::Parameters parameters= SPECIFICATION::STATIC_PARAMETERS::PARAMETER_VALUES;
+    ENVIRONMENT::State state;
+    ENVIRONMENT::Observation observation;
+    
 }
